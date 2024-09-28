@@ -25,3 +25,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+//Proyecto realizado por el grupo #3 de Seminario 2024 UMG Cuilapa
