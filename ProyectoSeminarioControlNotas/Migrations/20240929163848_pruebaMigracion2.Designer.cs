@@ -12,8 +12,8 @@ using ProyectoSeminarioControlNotas.Models;
 namespace ProyectoSeminarioControlNotas.Migrations
 {
     [DbContext(typeof(ProyectoDbContext))]
-    [Migration("20240929143643_terceraMigracion")]
-    partial class terceraMigracion
+    [Migration("20240929163848_pruebaMigracion2")]
+    partial class pruebaMigracion2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -12,8 +12,8 @@ using ProyectoSeminarioControlNotas.Models;
 namespace ProyectoSeminarioControlNotas.Migrations
 {
     [DbContext(typeof(ProyectoDbContext))]
-    [Migration("20240929133950_segundaMigracion")]
-    partial class segundaMigracion
+    [Migration("20240929163806_pruebaMigracion")]
+    partial class pruebaMigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,7 +46,7 @@ namespace ProyectoSeminarioControlNotas.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<bool?>("estadoAlumno")
+                    b.Property<bool>("estadoAlumno")
                         .HasColumnType("bit");
 
                     b.Property<DateOnly>("fechaNacimiento")

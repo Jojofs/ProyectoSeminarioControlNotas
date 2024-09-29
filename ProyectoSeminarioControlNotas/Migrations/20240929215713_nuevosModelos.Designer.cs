@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoSeminarioControlNotas.Models;
 
@@ -11,9 +12,11 @@ using ProyectoSeminarioControlNotas.Models;
 namespace ProyectoSeminarioControlNotas.Migrations
 {
     [DbContext(typeof(ProyectoDbContext))]
-    partial class ProyectoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240929215713_nuevosModelos")]
+    partial class nuevosModelos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
