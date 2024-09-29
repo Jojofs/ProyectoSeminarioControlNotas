@@ -1,7 +1,16 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using ProyectoSeminarioControlNotas.Models;
+using System.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Configuración de DbContext
+builder.Services.AddDbContext<ProyectoDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServer")));
 
 var app = builder.Build();
 
