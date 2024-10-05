@@ -26,8 +26,9 @@ namespace ProyectoSeminarioControlNotas.Models
         [MaxLength(255)]
         public string? correo { get; set; }
         [DisplayName("Número de teléfono")]
-        [Phone(ErrorMessage = "Ingrese un número de teléfono válido.")]
-        public int? numeroTelefono { get; set; }
+        [Required(ErrorMessage = "Ingrese un número de teléfono válido.")]
+        [Range(10000000, 99999999, ErrorMessage = "El número debe tener exactamente 8 dígitos.")]
+        public int numeroTelefono { get; set; }
         [DisplayName("Fecha de nacimiento")]
         [Required(ErrorMessage = "Ingrese una fecha de nacimiento.")]
         public DateOnly fechaNacimiento { get; set; }
