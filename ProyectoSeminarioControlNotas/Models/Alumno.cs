@@ -20,13 +20,15 @@ namespace ProyectoSeminarioControlNotas.Models
         [DisplayName("Carrera")]
         [MaxLength(100)]
         //[Required(ErrorMessage = "Ingrese una carrera.")] PENDIENTE: Hacer que se ingrese un valor de una lista
-        public string? carrera { get; set; }
+        [Required(ErrorMessage = "Ingrese una carrera.")]
+        public string carrera { get; set; }
         [DisplayName("Correo electrónico")]
         [EmailAddress(ErrorMessage = "Ingrese una dirección de correo electrónico válida.")]
+        [Required(ErrorMessage = "Ingrese un correo electrónico.")]
         [MaxLength(255)]
-        public string? correo { get; set; }
+        public string correo { get; set; }
         [DisplayName("Número de teléfono")]
-        [Required(ErrorMessage = "Ingrese un número de teléfono válido.")]
+        [Required(ErrorMessage = "Ingrese un número de teléfono.")]
         [Range(10000000, 99999999, ErrorMessage = "El número debe tener exactamente 8 dígitos.")]
         public int numeroTelefono { get; set; }
         [DisplayName("Fecha de nacimiento")]
