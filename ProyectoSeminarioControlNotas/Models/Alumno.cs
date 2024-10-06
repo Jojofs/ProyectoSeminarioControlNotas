@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoSeminarioControlNotas.Models
 {
@@ -18,10 +19,9 @@ namespace ProyectoSeminarioControlNotas.Models
         [Required(ErrorMessage = "Ingrese un apellido.")]
         public string apellido { get; set; }
         [DisplayName("Carrera")]
-        [MaxLength(100)]
-        //[Required(ErrorMessage = "Ingrese una carrera.")] PENDIENTE: Hacer que se ingrese un valor de una lista
         [Required(ErrorMessage = "Ingrese una carrera.")]
-        public string carrera { get; set; }
+        public int idCarrera { get; set; }
+        public virtual Carrera? Carrera { get; set; }
         [DisplayName("Correo electrónico")]
         [EmailAddress(ErrorMessage = "Ingrese una dirección de correo electrónico válida.")]
         [Required(ErrorMessage = "Ingrese un correo electrónico.")]
