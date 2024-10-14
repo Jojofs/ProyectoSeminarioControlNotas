@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Políticas";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Políticas de Seguridad</h1>
+    <div class="accordion" id="accordionPolicies">
+
+        <!-- Política de Contraseñas -->
+        <div class="card mb-3">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Política de Contraseñas
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionPolicies">
+                <div class="card-body">
+                    <ul>
+                        <li>La contraseña debe tener al menos 8 caracteres.</li>
+                        <li>Debe incluir letras mayúsculas y minúsculas.</li>
+                        <li>Debe contener al menos un número y un carácter especial.</li>
+                        <li>No debe incluir información personal.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Política de Usuarios -->
+        <div class="card mb-3">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Política de Usuarios
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionPolicies">
+                <div class="card-body">
+                    <ul>
+                        <li>Los usuarios deben cambiar su contraseña cada 90 días.</li>
+                        <li>Acceso bloqueado después de 5 intentos fallidos.</li>
+                        <li>El acceso se revocará tras 30 días de inactividad.</li>
+                        <li>Los usuarios deben aceptar los términos y condiciones.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Política de Privacidad -->
+        <div class="card mb-3">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Política de Privacidad
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionPolicies">
+                <div class="card-body">
+                    <ul>
+                        <li>Los datos de los usuarios son confidenciales y no se compartirán sin autorización.</li>
+                        <li>La información será almacenada de manera segura.</li>
+                        <li>Solo personal autorizado puede acceder a los datos personales.</li>
+                        <li>Los usuarios pueden solicitar la eliminación de sus datos en cualquier momento.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

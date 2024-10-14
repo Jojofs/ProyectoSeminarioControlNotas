@@ -18,7 +18,16 @@ namespace ProyectoSeminarioControlNotas.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult FAQ()
+        {
+            return View();
+        }
+
+        public IActionResult Politicas()
+        {
+            return View();
+        }
+        public IActionResult Acerca()
         {
             return View();
         }
