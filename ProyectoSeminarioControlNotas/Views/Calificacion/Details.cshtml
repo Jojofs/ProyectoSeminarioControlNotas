@@ -1,0 +1,60 @@
+﻿@model ProyectoSeminarioControlNotas.Models.Calificacion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Calificacion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Alumno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Alumno.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Curso)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Curso.nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notaParcialUno)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notaParcialUno)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notaParcialDos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notaParcialDos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notaZona)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notaZona)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notaExamen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notaExamen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.notaFinal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.notaFinal)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.idCalificacion">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
