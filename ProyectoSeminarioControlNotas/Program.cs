@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 //Configuración de DbContext
 builder.Services.AddDbContext<ProyectoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServer")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServerProduccion")));
 
 var app = builder.Build();
 
