@@ -21,8 +21,10 @@ namespace ProyectoSeminarioControlNotas.Controllers
         // GET: Alumno
         public async Task<IActionResult> Index()
         {
+            //Esta linea se encarga de mostrar los nombres de las carreras usando el idCarrera de cada registro
+            var alumnos = await _context.alumnos.Include(a => a.Carrera).Where(a => a.estadoAlumno).ToListAsync();
             //Aquí se filtran los registros para que se muestren unicamente los de estado True
-            return View(await _context.alumnos.Where(a=>a.estadoAlumno).ToListAsync());
+            return View(await _context.alumnos.Where(a => a.estadoAlumno).ToListAsync());
         }
 
         // GET: Alumno/Details/5
@@ -34,6 +36,7 @@ namespace ProyectoSeminarioControlNotas.Controllers
             }
 
             var alumno = await _context.alumnos
+                .Include(a => a.Carrera)
                 .FirstOrDefaultAsync(m => m.idAlumno == id);
             if (alumno == null)
             {
@@ -46,6 +49,7 @@ namespace ProyectoSeminarioControlNotas.Controllers
         // GET: Alumno/Create
         public IActionResult Create()
         {
+            ViewBag.Carreras = new SelectList(_context.carreras.Where(c => c.estadoCarrera).ToList(), "idCarrera", "nombre");
             return View();
         }
 
@@ -54,14 +58,31 @@ namespace ProyectoSeminarioControlNotas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idAlumno,estadoAlumno,nombre,apellido,carrera,correo,numeroTelefono,fechaNacimiento")] Alumno alumno)
+        public async Task<IActionResult> Create([Bind("idAlumno,estadoAlumno,nombre,apellido,idCarrera,correo,numeroTelefono,fechaNacimiento")] Alumno alumno)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(alumno);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Buscar la carrera con el idCarrera seleccionado
+                Carrera carrera = _context.carreras.Find(alumno.idCarrera);
+
+                if (carrera != null)
+                {
+                    // Establecer la propiedad Carrera del objeto Alumno
+                    alumno.Carrera = carrera;
+
+                    // Guardar el objeto Alumno en la base de datos
+                    _context.alumnos.Add(alumno);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    // Manejar el error si no se encuentra la carrera
+                    ModelState.AddModelError("", "La carrera seleccionada no existe");
+                    return View(alumno);
+                }
             }
+            ViewBag.Carreras = new SelectList(_context.carreras.Where(c => c.estadoCarrera).ToList(), "idCarrera", "nombre", alumno.idCarrera);
             return View(alumno);
         }
 
@@ -78,6 +99,7 @@ namespace ProyectoSeminarioControlNotas.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Carreras = new SelectList(_context.carreras, "idCarrera", "nombre", alumno.idCarrera);
             return View(alumno);
         }
 
@@ -86,7 +108,7 @@ namespace ProyectoSeminarioControlNotas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idAlumno,estadoAlumno,nombre,apellido,carrera,correo,numeroTelefono,fechaNacimiento")] Alumno alumno)
+        public async Task<IActionResult> Edit(int id, [Bind("idAlumno,estadoAlumno,nombre,apellido,idCarrera,correo,numeroTelefono,fechaNacimiento")] Alumno alumno)
         {
             if (id != alumno.idAlumno)
             {
@@ -125,6 +147,7 @@ namespace ProyectoSeminarioControlNotas.Controllers
             }
 
             var alumno = await _context.alumnos
+                .Include(a => a.Carrera)
                 .FirstOrDefaultAsync(m => m.idAlumno == id);
             if (alumno == null)
             {

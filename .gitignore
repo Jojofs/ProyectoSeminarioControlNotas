@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 # Carpeta Migrations ignorada para evitar conflictos durante la compilación del proyecto
 Migrations/
+# Ignorar el archivo ProyectoDbContextModelSnapshot.cs ubicado dentro de carpeta Migrations
+ProyectoDbContextModelSnapshot.cs

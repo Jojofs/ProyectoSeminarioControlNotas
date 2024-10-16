@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProyectoSeminarioControlNotas.Models
 {
-    public class Alumno
+    public class Profesor
     {
         [Key]
-        public int idAlumno { get; set; }
+        public int idProfesor { get; set; }
         [Required]
-        public bool estadoAlumno { get; set; } = true; // Para hacer borrado lógico y no eliminar el registro
+        public bool estadoProfesor { get; set; } = true; // Para hacer borrado lógico y no eliminar el registro
         [DisplayName("Nombre")]
         [MaxLength(100)]
         [Required(ErrorMessage = "Ingrese un nombre.")]
@@ -18,10 +17,6 @@ namespace ProyectoSeminarioControlNotas.Models
         [MaxLength(100)]
         [Required(ErrorMessage = "Ingrese un apellido.")]
         public string apellido { get; set; }
-        [DisplayName("Carrera")]
-        [Required(ErrorMessage = "Ingrese una carrera.")]
-        public int idCarrera { get; set; }
-        public virtual Carrera? Carrera { get; set; }
         [DisplayName("Correo electrónico")]
         [EmailAddress(ErrorMessage = "Ingrese una dirección de correo electrónico válida.")]
         [Required(ErrorMessage = "Ingrese un correo electrónico.")]
