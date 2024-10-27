@@ -366,3 +366,4 @@ FodyWeavers.xsd
 Migrations/
 # Ignorar el archivo ProyectoDbContextModelSnapshot.cs ubicado dentro de carpeta Migrations
 ProyectoDbContextModelSnapshot.cs
+/ProyectoSeminarioControlNotas/appsettings.json
