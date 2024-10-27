@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoSeminarioControlNotas.Models;
 using System.Diagnostics;
 
 namespace ProyectoSeminarioControlNotas.Controllers
 {
+    //Esto permite que puedan acceder a las vistas pertenecientes al controlador Home sin iniciar sesión
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -24,6 +27,10 @@ namespace ProyectoSeminarioControlNotas.Controllers
         }
 
         public IActionResult Politicas()
+        {
+            return View();
+        }
+        public IActionResult Contacto()
         {
             return View();
         }

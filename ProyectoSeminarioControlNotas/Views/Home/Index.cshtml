@@ -1,12 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Usuario> SignInManager
+@inject UserManager<Usuario> UserManager
+@{
+    ViewData["Title"] = "Inicio";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Inicio</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido</h1>
 </div>
 
-<div class="alert alert-danger" role="alert">
-    <p>Este es un mensaje de prueba que se usará para describir el rol del usuario que inicio sesión</p>
-</div>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="alert alert-info" role="alert">
+        <p>Este es un mensaje de prueba que se usará para describir el rol del usuario que inicio sesión</p>
+    </div>
+    <div class="alert alert-success" role="alert">
+        <p>Si lees esto has iniciado sesión</p>
+    </div>
+}
+else
+{
+    <div class="container py-4 row">
+        <div class="col-md-8">
+            <p>
+                La Universidad Mariano Gálvez de Guatemala es una institución de educación superior reconocida por su enfoque en la formación integral de profesionales. Fundada en 1966, ha ampliado su oferta académica a través de diversas facultades y centros universitarios en todo el país. Su misión se centra en proporcionar educación de calidad, fomentando el desarrollo académico, científico y cultural de sus estudiantes.<br>
+            </p>
+            <p>
+                El Centro Universitario de Cuilapa, ubicado en la ciudad de Cuilapa, es una de las sedes de la Universidad Mariano Gálvez. Este centro se destaca por ofrecer una variedad de programas académicos que buscan atender las necesidades educativas de la región. Además, promueve actividades culturales y de investigación, contribuyendo al desarrollo local y a la formación de profesionales comprometidos con su comunidad.
+            </p>
+            <p>Si deseas saber más de nuestra casa de estudios <a href="https://umg.edu.gt/" target="_blank">entra a este link</a>.</p>
+        </div>
+        <div class="col-md-4 align-content-center">
+            <img src="~/Logo UMG.png" alt="Universidad Mariano Gálvez de Guatemala" class="img-fluid">
+        </div>
+    </div>
+
+    
+}
+
+

@@ -1,0 +1,1 @@
+﻿- Se logró simplificar el bloqueo de usuario dejando únicamente una notificacion, podemos eliminar Lockout.cshtml y Lockout.cs sin problema

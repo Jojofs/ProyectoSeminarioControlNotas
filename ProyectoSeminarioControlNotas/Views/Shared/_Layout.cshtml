@@ -1,24 +1,47 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<Usuario> SignInManager
+@inject UserManager<Usuario> UserManager
+
+@{
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
     var action = ViewContext.RouteData.Values["action"]?.ToString();
     // Lista de controladores donde se debe mostrar _LayoutAdmin
     var allowedControllers = new List<string> { "Home", "Alumno", "Calificacion", "Carrera", "Curso", "Profesor" };
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-gt">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EducaTeK</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] | FIUMG Cuilapa</title>
+    <link rel="icon" href="~/favicon.svg" type="image/svg+xml"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProyectoSeminarioControlNotas.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+        <symbol id="contrast" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z" />
+        </symbol>
+        
+        <symbol id="dark_mode" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+        </symbol>
+
+        <symbol id="light_mode" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+            <path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+        </symbol>
+    </svg>
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Logotipo para el proyecto esto es temporal falta diseño</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/favicon.svg" width="50" height="50">
+                    FIUMG Cuilapa
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,24 +49,64 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Acerca">Noticias</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Acerca">Noticias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="FAQ">Preguntas frecuentes</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="FAQ">Preguntas frecuentes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Acerca">Contacto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Acerca">Acerca de</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contacto">Contacto</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+
+
+                        <li class="nav-item dropdown">
+                            <button class="btn dropdown-toggle py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                                    id="bd-theme"
+                                    type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    data-bs-display="static"
+                                    aria-label="Toggle theme (auto)">
+                                <svg class="bi my-1 theme-icon-active" width="24" height="24"><use href="#contrast"></use></svg>
+                                <span class="d-lg-none ms-2" id="bd-theme-text">Tema</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                        <svg class="bi me-2" width="24" height="24"><use href="#light_mode"></use></svg>
+                                        Tema Claro
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                        <svg class="bi me-2" width="24" height="24"><use href="#dark_mode"></use></svg>
+                                        Tema Oscuro
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                                        <svg class="bi me-2" width="24" height="24"><use href="#contrast"></use></svg>
+                                        Tema Automático
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- 
+                        <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                            <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div>
+                            <hr class="d-lg-none my-2 ">
+                        </li>
+                         -->
+                    </ul>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
-    <!---Este código permite que la lista de opciones se muestre unicamente dentro de los modelos correspondientes y el inicio-->
-    @if (allowedControllers.Contains(controller) && action == "Index")
+    <!---Este código permite que la lista de opciones se muestre unicamente dentro de los modelos correspondientes
+     Además de mostrarse únicamente cuando se ha iniciado sesión-->
+    @if ((SignInManager.IsSignedIn(User)) && (allowedControllers.Contains(controller) && action == "Index"))
     {
         @await Html.PartialAsync("_LayoutAdmin")
     }
@@ -56,11 +119,11 @@
 
     <footer class="border-top footer text-muted">
         <div class="container text-center">
-            &copy; Seminario 2024 Grupo 4 - UMG Cuilapa - <a asp-area="" asp-controller="Home" asp-action="Politicas">Políticas</a> - <a asp-area="" asp-controller="Home" asp-action="Acerca">Acerca de</a>
+            &copy; Seminario 2024 Grupo 4 - FIUMG Cuilapa - <a asp-area="" asp-controller="Home" asp-action="Politicas">Políticas</a> - <a asp-area="" asp-controller="Home" asp-action="Acerca">Acerca de</a>
         </div>
-    </footer>
+    </footer>         
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

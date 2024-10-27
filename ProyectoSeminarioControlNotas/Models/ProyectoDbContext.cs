@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ProyectoSeminarioControlNotas.Models;
 
 namespace ProyectoSeminarioControlNotas.Models
 {
-    public class ProyectoDbContext : DbContext
+    public class ProyectoDbContext : IdentityDbContext<Usuario>
     {
         public ProyectoDbContext(DbContextOptions<ProyectoDbContext> options) : base(options)
         {
@@ -16,6 +19,7 @@ namespace ProyectoSeminarioControlNotas.Models
         public DbSet<Calificacion> calificaciones { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             // Relación Alumno - Carrera
             modelBuilder.Entity<Alumno>()
                 .HasOne(a => a.Carrera)

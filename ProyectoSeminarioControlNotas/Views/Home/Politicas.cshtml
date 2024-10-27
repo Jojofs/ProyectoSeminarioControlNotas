@@ -2,73 +2,92 @@
     ViewData["Title"] = "Políticas";
 }
 
-<div class="container">
-    <h1 class="text-center mb-4">Políticas de Seguridad</h1>
-    <div class="accordion" id="accordionPolicies">
-
-        <!-- Política de Contraseñas -->
-        <div class="card mb-3">
-            <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Política de Contraseñas
-                    </button>
-                </h2>
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Políticas de seguridad</h1>
+        <p class="lead">Nos comprometemos a proteger su información personal y garantizar una experiencia segura en nuestra plataforma. Implementamos medidas de seguridad y seguimos las mejores prácticas para salvaguardar los datos, previniendo accesos no autorizados y ciberamenazas. Te invitamos a revisar nuestras políticas para conocer cómo se maneja y protege tu información.</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- Política de Contraseñas -->
+            <div class="col-md-4 mb-3">
+                <div class="container text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" viewBox="0 -960 960 960" fill="currentColor"><path d="M280-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 120q-100 0-170-70T40-480q0-100 70-170t170-70q81 0 141.5 46T506-560h335l79 79-140 160-100-79-80 80-80-80h-14q-25 72-87 116t-139 44Z" /></svg>
+                </div>
+                <div class="card">
+                    <div class="card-header text-center" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Política de Contraseñas
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordionPolicies">
+                        <div class="card-body">
+                            <ul>
+                                <li>La contraseña debe contener un mínimo de 8 caracteres y un máximo de 100 caracteres.</li>
+                                <li>Debe incluir letras, mínimo una letra mayúscula ('A'-'Z') y una letra minúscula ('a'-'z').</li>
+                                <li>Debe incluir mínimo un número (0-9).</li>
+                                <li>Debe incluir mínimo un caracter especial o un espacio <br /> ('!', '"', '#', '$', '%', '&', ''' , '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@@', '[', '\', ']', '^', '_', '`', '{', '|', '}', '~', ' ').</li>
+                                <li>No debe incluir información personal.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionPolicies">
-                <div class="card-body">
-                    <ul>
-                        <li>La contraseña debe tener al menos 8 caracteres.</li>
-                        <li>Debe incluir letras mayúsculas y minúsculas.</li>
-                        <li>Debe contener al menos un número y un carácter especial.</li>
-                        <li>No debe incluir información personal.</li>
-                    </ul>
+            <!-- Política de Usuarios -->
+            <div class="col-md-4 mb-3">
+                <div class="container text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" viewBox="0 -960 960 960" fill="currentColor"><path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Z" /></svg>
+                </div>
+                <div class="card">
+                    <div class="card-header text-center" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Política de Usuarios
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionPolicies">
+                        <div class="card-body">
+                            <ul>
+                                <li>Los usuarios deben cambiar su contraseña cada 90 días.</li>
+                                <li>Acceso bloqueado después de 5 intentos fallidos.</li>
+                                <li>El acceso se revocará tras 30 días de inactividad.</li>
+                                <li>Los usuarios deben aceptar los términos y condiciones.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Política de Privacidad -->
+            <div class="col-md-4 mb-3">
+                <div class="container text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50%" height="50%" viewBox="0 -960 960 960" fill="currentColor"><path d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 10-.5 20t-1.5 20q-9-2-18.5-3t-19.5-1q-83 0-141.5 58T560-280v170q-19 10-39 17.5T480-80Zm194 0q-14 0-24-10t-10-24v-132q0-14 10-24t24-10h6v-40q0-33 23.5-56.5T760-400q33 0 56.5 23.5T840-320v40h6q14 0 24 10t10 24v132q0 14-10 24t-24 10H674Zm46-200h80v-40q0-17-11.5-28.5T760-360q-17 0-28.5 11.5T720-320v40Z" /></svg>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header text-center" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-center collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Política de Privacidad
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionPolicies">
+                        <div class="card-body">
+                            <ul>
+                                <li>Los datos de los usuarios son confidenciales y no se compartirán sin autorización.</li>
+                                <li>La información será almacenada de manera segura.</li>
+                                <li>Solo personal autorizado puede acceder a los datos personales.</li>
+                                <li>Los usuarios pueden solicitar la eliminación de sus datos en cualquier momento.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Política de Usuarios -->
-        <div class="card mb-3">
-            <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Política de Usuarios
-                    </button>
-                </h2>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionPolicies">
-                <div class="card-body">
-                    <ul>
-                        <li>Los usuarios deben cambiar su contraseña cada 90 días.</li>
-                        <li>Acceso bloqueado después de 5 intentos fallidos.</li>
-                        <li>El acceso se revocará tras 30 días de inactividad.</li>
-                        <li>Los usuarios deben aceptar los términos y condiciones.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Política de Privacidad -->
-        <div class="card mb-3">
-            <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Política de Privacidad
-                    </button>
-                </h2>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordionPolicies">
-                <div class="card-body">
-                    <ul>
-                        <li>Los datos de los usuarios son confidenciales y no se compartirán sin autorización.</li>
-                        <li>La información será almacenada de manera segura.</li>
-                        <li>Solo personal autorizado puede acceder a los datos personales.</li>
-                        <li>Los usuarios pueden solicitar la eliminación de sus datos en cualquier momento.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>

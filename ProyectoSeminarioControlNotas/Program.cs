@@ -8,9 +8,23 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//Configuraci�n de DbContext
+//Configuracion de DbContext: Cuando se hacen pruebas locales debe cambiarse por la variable "conexionSQLServer", en caso de pasar al servidor debe usarse "conexionSQLServer"
 builder.Services.AddDbContext<ProyectoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServerProduccion")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServer")));
+
+builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>().AddEntityFrameworkStores<ProyectoDbContext>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Otras configuraciones...
+
+    // Configuracion para bloqueo de cuenta (Lockout)
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // Tiempo de bloqueo
+    options.Lockout.MaxFailedAccessAttempts = 5; // Número máximo de intentos fallidos
+    options.Lockout.AllowedForNewUsers = true; // Permite el bloqueo para nuevos usuarios
+});
+
+
 
 var app = builder.Build();
 
@@ -26,12 +40,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapRazorPages();
 app.Run();
-//Proyecto realizado por el grupo #3 de Seminario 2024 UMG Cuilapa
+//Proyecto realizado por el grupo #4 de Seminario 2024 UMG Cuilapa
