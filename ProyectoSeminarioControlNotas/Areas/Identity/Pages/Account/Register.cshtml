@@ -18,12 +18,13 @@
 <body>
     <div class="container">
         <div class="col justify-content-center">
-
-
-            <h1 class="text-center">@ViewData["Title"]</h1>
-
             <div class="row justify-content-center">
                 <div class="col-md-4">
+                    <div class="text-center">
+                        <img src="~/favicon.svg" alt="FIUMG Cuilapa" class="img-fluid">
+                    </div>
+                    
+                    <h1 class="text-center">@ViewData["Title"]</h1>
                     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                         <h4 class="text-center">Crea un usuario para acceder al sistema</h4>
                         <hr />
@@ -46,7 +47,7 @@
                         <div class="form-check mb-3">
                             <input type="checkbox" required class="form-check-input" id="termsCheck" />
                             <label class="form-check-label" for="termsCheck">
-                                Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">términos y condiciones</a>
+                                Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">términos y condiciones</a>.
                             </label>
                         </div>
                         <!-- Modal de Términos y Condiciones -->
@@ -58,10 +59,9 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <p>Algunos ejemplos de términos:</p>
+                                        <p>Al acceder y utilizar nuestra plataforma, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo, no deberías utilizar nuestros servicios.</p>
+                                        <p>Los usuarios se comprometen a utilizar la plataforma de manera responsable y de conformidad con la ley. No se permite el uso de la plataforma para actividades ilegales o no autorizadas.</p>
                                         <ul>
-                                            <li>Aceptación de Términos: Al acceder y utilizar nuestra plataforma, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo, no deberías utilizar nuestros servicios.</li>
-                                            <li>Uso de la Plataforma: Los usuarios se comprometen a utilizar la plataforma de manera responsable y de conformidad con la ley. No se permite el uso de la plataforma para actividades ilegales o no autorizadas.</li>
                                             <li>
                                                 Política de Contraseñas:
                                                 <ul>
@@ -90,10 +90,9 @@
                                                     <li>Los usuarios pueden solicitar la eliminación de sus datos en cualquier momento, siguiendo el proceso establecido en nuestra plataforma.</li>
                                                 </ul>
                                             </li>
-                                            <li>Modificaciones a los Términos: Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en la plataforma. Es responsabilidad del usuario revisar periódicamente estos términos.</li>
-                                            <li>Contacto: Para cualquier pregunta o inquietud relacionada con estos términos y condiciones, por favor contáctanos a través de nuestro formulario de contacto en la plataforma.</li>
                                         </ul>
-
+                                        <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en la plataforma. Es responsabilidad del usuario revisar periódicamente estos términos.</p>
+                                        <p>Para cualquier pregunta o inquietud relacionada con estos términos y condiciones, por favor contáctanos a través de nuestro formulario de contacto en la plataforma.</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
