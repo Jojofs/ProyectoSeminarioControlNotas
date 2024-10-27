@@ -8,9 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//Configuracion de DbContext: Cuando se hacen pruebas locales debe cambiarse por la variable "conexionSQLServer", en caso de pasar al servidor debe usarse "conexionSQLServer"
+//Configuracion de DbContext: Cuando se hacen pruebas locales debe cambiarse por la variable "conexionSQLServer", en caso de pasar al servidor debe usarse "conexionSQLServerProduccion"
 builder.Services.AddDbContext<ProyectoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServer")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServerProduccion")));
 
 builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>().AddEntityFrameworkStores<ProyectoDbContext>();
 

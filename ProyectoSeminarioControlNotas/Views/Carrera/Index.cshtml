@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProyectoSeminarioControlNotas.Models.Carrera>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Carreras";
 }
 
-<h1>Index</h1>
+<h1>Listado de carreras</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear</a>
 </p>
 <table class="table">
     <thead>
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.codigoCarrera)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.idCarrera">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.idCarrera">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.idCarrera">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.idCarrera">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.idCarrera">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.idCarrera">Eliminar</a>
             </td>
         </tr>
 }
