@@ -76,5 +76,26 @@
                     showActiveTheme(theme, true)
                 })
             })
+        // Código adicional para el cambio de íconos en el collapse
+
+        const accordionButton = document.querySelector('[data-bs-toggle="collapse"]');
+        const icon = accordionButton.querySelector(".icon");
+
+        accordionButton.addEventListener("click", () => {
+            const isExpanded = accordionButton.classList.contains("collapsed");
+
+            // Aplica la rotación según el estado
+            icon.style.transition = "transform 0.3s ease";
+            icon.style.transform = isExpanded ? "rotate(180deg)" : "rotate(0deg)";
+        });
+        document.addEventListener('shown.bs.collapse', function (e) {
+            e.target.closest('.card').querySelector('.collapsed-icon').classList.add('d-none')
+            e.target.closest('.card').querySelector('.expanded-icon').classList.remove('d-none')
+        })
+
+        document.addEventListener('hidden.bs.collapse', function (e) {
+            e.target.closest('.card').querySelector('.collapsed-icon').classList.remove('d-none')
+            e.target.closest('.card').querySelector('.expanded-icon').classList.add('d-none')
+        })
     })
 })()
