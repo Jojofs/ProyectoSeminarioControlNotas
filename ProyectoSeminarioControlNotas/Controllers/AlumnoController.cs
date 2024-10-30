@@ -37,12 +37,6 @@ namespace ProyectoSeminarioControlNotas.Controllers
             //var alumnos = await _context.alumnos.Include(a => a.Carrera).Where(a => a.estadoAlumno).ToListAsync();
             //Aquí se filtran los registros para que se muestren únicamente los de estado True
             return View(await alumnos.Where(a => a.estadoAlumno).ToListAsync());
-
-
-
-            
-            //Aquí se filtran los registros para que se muestren unicamente los de estado True
-            return View(await _context.alumnos.Where(a => a.estadoAlumno).ToListAsync());
         }
 
         // GET: Alumno/Details/5
