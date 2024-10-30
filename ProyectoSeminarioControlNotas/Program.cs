@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 //Configuracion de DbContext: Cuando se hacen pruebas locales debe cambiarse por la variable "conexionSQLServer", en caso de pasar al servidor debe usarse "conexionSQLServerProduccion"
 builder.Services.AddDbContext<ProyectoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServerProduccion")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("conexionSQLServerPruebas")));
 
 builder.Services.AddDefaultIdentity<Usuario>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>().AddEntityFrameworkStores<ProyectoDbContext>();
 
