@@ -21,10 +21,26 @@ namespace ProyectoSeminarioControlNotas.Controllers
         }
 
         // GET: Alumno
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
+
+            var alumnos = from alumno in _context.alumnos
+             .Include(a => a.Carrera)
+                          where alumno.estadoAlumno
+                          select alumno;
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                alumnos = alumnos.Where(a => a.nombre!.Contains(buscar));
+            }
             //Esta linea se encarga de mostrar los nombres de las carreras usando el idCarrera de cada registro
-            var alumnos = await _context.alumnos.Include(a => a.Carrera).Where(a => a.estadoAlumno).ToListAsync();
+            //var alumnos = await _context.alumnos.Include(a => a.Carrera).Where(a => a.estadoAlumno).ToListAsync();
+            //Aquí se filtran los registros para que se muestren únicamente los de estado True
+            return View(await alumnos.Where(a => a.estadoAlumno).ToListAsync());
+
+
+
+            
             //Aquí se filtran los registros para que se muestren unicamente los de estado True
             return View(await _context.alumnos.Where(a => a.estadoAlumno).ToListAsync());
         }

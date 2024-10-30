@@ -21,10 +21,17 @@ namespace ProyectoSeminarioControlNotas.Controllers
         }
 
         // GET: Profesor
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
+            var profesores = from profesor in _context.profesores select profesor;
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                profesores = profesores.Where(c => c.nombre!.Contains(buscar));
+            }
+
             //Aquí se filtran los registros para que se muestren unicamente los de estado True
-            return View(await _context.profesores.Where(a => a.estadoProfesor).ToListAsync());
+            return View(await profesores.Where(a => a.estadoProfesor).ToListAsync());
         }
 
         // GET: Profesor/Details/5

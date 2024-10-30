@@ -14,7 +14,7 @@ namespace ProyectoSeminarioControlNotas.Models
         public string nombre { get; set; }
         [DisplayName("Código de curso")]
         [Required(ErrorMessage = "Ingrese un código de curso.")]
-        [Range(1000, 9999, ErrorMessage = "El código debe tener exactamente 4 dígitos.")]
+        [Range(1, 9999, ErrorMessage = "El código debe tener entre 1 y 9999.")]
         public int codigoCurso { get; set; }
         [DisplayName("Carrera")]
         [Required(ErrorMessage = "Ingrese una carrera.")]

@@ -17,7 +17,7 @@ namespace ProyectoSeminarioControlNotas.Models
         [Required(ErrorMessage = "Ingrese una descripción.")]
         public string descripcion { get; set; }
         [DisplayName("Código de carrera")]
-        [Range(1000, 9999, ErrorMessage = "El código de carrera debe estar entre 1000 y 9999.")]
+        [Range(1, 9999, ErrorMessage = "El código de carrera debe estar entre 1 y 9999.")]
         [Required(ErrorMessage = "Ingrese un código de carrera.")]
         public int codigoCarrera { get; set; }
     }

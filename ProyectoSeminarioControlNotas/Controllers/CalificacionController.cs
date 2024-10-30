@@ -64,6 +64,8 @@ namespace ProyectoSeminarioControlNotas.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Calcular la nota final antes de guardar
+                calificacion.CalcularNotaFinal();
                 _context.Add(calificacion);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -105,6 +107,8 @@ namespace ProyectoSeminarioControlNotas.Controllers
 
             if (ModelState.IsValid)
             {
+                // Calcular la nota final antes de guardar
+                calificacion.CalcularNotaFinal();
                 try
                 {
                     _context.Update(calificacion);

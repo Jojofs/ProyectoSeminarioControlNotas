@@ -21,12 +21,19 @@ namespace ProyectoSeminarioControlNotas.Controllers
         }
 
         // GET: Curso
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
-            var proyectoDbContext = _context.cursos.Include(c => c.Carrera).Include(c => c.Profesor);
+            var cursos = from curso in _context.cursos
+             .Include(c => c.Carrera)
+             .Include(c => c.Profesor)
+                         where curso.estadoCurso
+                         select curso;
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                cursos = cursos.Where(c => c.nombre!.Contains(buscar));
+            }
             //Aquí se filtran los registros para que se muestren unicamente los de estado True
-            //return View(await _context.cursos.Where(a => a.estadoCurso).ToListAsync());
-            return View(await proyectoDbContext.ToListAsync());
+            return View(await cursos.Where(c => c.estadoCurso).ToListAsync());
         }
 
         // GET: Curso/Details/5

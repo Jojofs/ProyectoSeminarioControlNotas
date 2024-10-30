@@ -21,10 +21,17 @@ namespace ProyectoSeminarioControlNotas.Controllers
         }
 
         // GET: Carrera
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
+            var carreras = from carrera in _context.carreras select carrera;
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                carreras = carreras.Where(c => c.nombre!.Contains(buscar));  
+            }
+
             //Aquí se filtran los registros para que se muestren unicamente los de estado True
-            return View(await _context.carreras.Where(a => a.estadoCarrera).ToListAsync());
+            return View(await carreras.Where(a => a.estadoCarrera).ToListAsync());
         }
 
         // GET: Carrera/Details/5

@@ -18,24 +18,23 @@ namespace ProyectoSeminarioControlNotas.Models
         public int idCurso { get; set; }
         public virtual Curso? Curso { get; set; }
         [DisplayName("Parcial 1")]
-        [Required(ErrorMessage = "Ingrese una nota para el parcial 1.")]
         [Range(0, 15, ErrorMessage = "La nota debe ser entre 0 y 15.")]
-        public int notaParcialUno { get; set; }
+        public int? notaParcialUno { get; set; }
         [DisplayName("Parcial 2")]
-        [Required(ErrorMessage = "Ingrese una nota para el parcial 2.")]
         [Range(0, 15, ErrorMessage = "La nota debe ser entre 0 y 15.")]
-        public int notaParcialDos { get; set; }
+        public int? notaParcialDos { get; set; }
         [DisplayName("Zona")]
-        [Required(ErrorMessage = "Ingrese una nota para la zona.")]
         [Range(0, 35, ErrorMessage = "La nota debe ser entre 0 y 35.")]
-        public int notaZona { get; set; }
+        public int? notaZona { get; set; }
         [DisplayName("Examen final")]
-        [Required(ErrorMessage = "Ingrese una nota para el examen final.")]
         [Range(0, 35, ErrorMessage = "La nota debe ser entre 0 y 35.")]
-        public int notaExamen { get; set; }
+        public int? notaExamen { get; set; }
         [DisplayName("Nota final")]
-        [Required(ErrorMessage = "Ingrese una nota para la nota final.")]
         [Range(0, 100, ErrorMessage = "La nota debe ser entre 0 y 100.")]
-        public int notaFinal { get; set; }
+        public int? notaFinal { get; set; }
+        public void CalcularNotaFinal()
+        {
+            notaFinal = (notaParcialUno ?? 0) + (notaParcialDos ?? 0) + (notaZona ?? 0) + (notaExamen ?? 0);
+        }
     }
 }
